@@ -1,6 +1,6 @@
 # 🚀 Clase 2: Fundamentos de JavaScript I
 
-![DevSeniorCode](https://via.placeholder.com/800x300?text=DevSeniorCode+JavaScript)
+<img width="598" height="577" alt="image" src="https://github.com/user-attachments/assets/34042598-5068-46c5-bd22-659593029be7" />
 
 > **Bienvenido a la Clase 2** - En esta sesión exploraremos los conceptos fundamentales de JavaScript, el mundo de los algoritmos, bases de datos y las diferencias entre lenguajes tipados y débilmente tipados.
 
