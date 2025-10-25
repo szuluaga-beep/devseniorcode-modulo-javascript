@@ -42,6 +42,8 @@ El Módulo 1 se centra en los pilares esenciales para construir aplicaciones web
 El punto inicial de este repositorio es la rama `master`.
 
 * `master`: Contiene el estado final y estable de los proyectos y las *demos* principales.
+
+### Y tendremos carpetas para las clases, ejercicios y proyecto final (Proyecto integrado)
 * `/clases`: Material de apoyo y notas de las sesiones.
 * `/ejercicios`: Ejercicios prácticos resueltos por tema.
 * `/proyecto-final`: Código fuente del proyecto web dinámico.
