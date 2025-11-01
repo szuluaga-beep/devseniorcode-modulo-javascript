@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clase 3 - Estructuras de control y bucles</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Clase 3 — Estructuras de control y bucles</h1>
+
+    <section class="card">
+      <h2>If / Else — Par o impar</h2>
+      <div class="row">
+        <input id="numInput" type="number" placeholder="Ingresa un número" />
+        <button id="checkBtn">Comprobar</button>
+      </div>
+      <p id="numResult" class="output"></p>
+    </section>
+
+    <section class="card">
+      <h2>Switch — Mensaje por día</h2>
+      <div class="row">
+        <select id="daySelect">
+          <option value="lunes">Lunes</option>
+          <option value="martes">Martes</option>
+          <option value="miercoles">Miércoles</option>
+          <option value="jueves">Jueves</option>
+          <option value="viernes">Viernes</option>
+          <option value="sabado">Sábado</option>
+          <option value="domingo">Domingo</option>
+        </select>
+        <button id="dayBtn">Mostrar</button>
+      </div>
+      <p id="dayResult" class="output"></p>
+    </section>
+
+    <section class="card">
+      <h2>Bucle For / for...of — Lista dinámica</h2>
+      <div class="row">
+        <input id="itemInput" placeholder="Nuevo elemento" />
+        <button id="addItemBtn">Añadir</button>
+      </div>
+      <div class="row">
+        <input id="filterInput" placeholder="Filtrar lista (contains)" />
+        <button id="filterBtn">Filtrar</button>
+        <button id="resetFilterBtn">Reset</button>
+      </div>
+      <ul id="itemsList" class="list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>for...in — Propiedades de un objeto</h2>
+      <button id="showObjBtn">Mostrar propiedades</button>
+      <pre id="objOutput" class="output code"></pre>
+    </section>
+
+    <section class="card">
+      <h2>while / do...while — Contadores</h2>
+      <div class="row">
+        <button id="startWhile">Iniciar while (hasta 5)</button>
+        <button id="startDoWhile">Iniciar do...while (hasta 5)</button>
+      </div>
+      <p id="whileOutput" class="output"></p>
+    </section>
+
+    <footer>
+      <p>Abre este archivo en el navegador y prueba las diferentes interacciones para ver ejemplos reales de estructuras de control y bucles.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
