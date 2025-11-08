@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript - Ejercicios Clase 7</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Principal -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>🚀 TypeScript en Acción</h1>
+            <p>Ejercicios prácticos con tipado estático y JavaScript moderno</p>
+            <div class="status-indicator" id="tsStatus">
+                <span class="status-dot"></span>
+                <span class="status-text">Inicializando TypeScript...</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#tipos">Tipos</a></li>
+                <li><a href="#interfaces">Interfaces</a></li>
+                <li><a href="#clases">Clases</a></li>
+                <li><a href="#generics">Generics</a></li>
+                <li><a href="#proyecto">Proyecto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        
+        <!-- Sección 1: Tipos Básicos -->
+        <section id="tipos" class="section">
+            <div class="container">
+                <h2>📝 Ejercicio 1: Sistema de Tipos</h2>
+                
+                <div class="exercise-card">
+                    <h3>Validador de Tipos</h3>
+                    <p>Introduce diferentes valores y observa cómo TypeScript valida los tipos:</p>
+                    
+                    <div class="input-group">
+                        <label for="stringInput">Texto (string):</label>
+                        <input type="text" id="stringInput" placeholder="Escribe algo...">
+                        <span class="type-indicator" id="stringType"></span>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="numberInput">Número (number):</label>
+                        <input type="number" id="numberInput" placeholder="123">
+                        <span class="type-indicator" id="numberType"></span>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="booleanInput">Booleano (boolean):</label>
+                        <select id="booleanInput">
+                            <option value="">Selecciona...</option>
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </select>
+                        <span class="type-indicator" id="booleanType"></span>
+                    </div>
+                    
+                    <div class="result-area">
+                        <h4>Resultado del Análisis:</h4>
+                        <pre id="typeAnalysis">Introduce algunos valores para ver el análisis de tipos...</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 2: Interfaces -->
+        <section id="interfaces" class="section">
+            <div class="container">
+                <h2>🏗️ Ejercicio 2: Interfaces y Objetos</h2>
+                
+                <div class="exercise-card">
+                    <h3>Gestión de Usuarios</h3>
+                    <p>Crear y validar usuarios usando interfaces TypeScript:</p>
+                    
+                    <div class="form-grid">
+                        <div class="form-column">
+                            <h4>Crear Usuario</h4>
+                            <form id="userForm">
+                                <div class="input-group">
+                                    <label for="userName">Nombre:</label>
+                                    <input type="text" id="userName" required>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="userEmail">Email:</label>
+                                    <input type="email" id="userEmail" required>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="userAge">Edad (opcional):</label>
+                                    <input type="number" id="userAge" min="0" max="120">
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label for="userRole">Rol:</label>
+                                    <select id="userRole" required>
+                                        <option value="">Selecciona...</option>
+                                        <option value="usuario">Usuario</option>
+                                        <option value="admin">Administrador</option>
+                                        <option value="moderador">Moderador</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" class="btn-primary">Crear Usuario</button>
+                            </form>
+                        </div>
+                        
+                        <div class="form-column">
+                            <h4>Usuarios Creados</h4>
+                            <div id="usersList" class="users-list">
+                                <p class="empty-state">No hay usuarios creados aún...</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="code-preview">
+                        <h4>Interfaces TypeScript:</h4>
+                        <pre id="interfaceCode">
+interface Usuario {
+    id: number;
+    nombre: string;
+    email: string;
+    edad?: number;
+    rol: 'usuario' | 'admin' | 'moderador';
+    fechaCreacion: Date;
+}
+
+interface Admin extends Usuario {
+    permisos: string[];
+    nivel: 'básico' | 'avanzado' | 'super';
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 3: Clases -->
+        <section id="clases" class="section">
+            <div class="container">
+                <h2>🎯 Ejercicio 3: Clases y Herencia</h2>
+                
+                <div class="exercise-card">
+                    <h3>Sistema de Vehículos</h3>
+                    <p>Implementación de clases con herencia y polimorfismo:</p>
+                    
+                    <div class="vehicle-controls">
+                        <div class="control-group">
+                            <h4>Crear Vehículo</h4>
+                            <select id="vehicleType">
+                                <option value="coche">Coche</option>
+                                <option value="moto">Motocicleta</option>
+                                <option value="bicicleta">Bicicleta</option>
+                            </select>
+                            <input type="text" id="vehicleBrand" placeholder="Marca">
+                            <input type="text" id="vehicleModel" placeholder="Modelo">
+                            <input type="number" id="vehicleYear" placeholder="Año" min="1900" max="2025">
+                            <button id="createVehicle" class="btn-primary">Crear Vehículo</button>
+                        </div>
+                        
+                        <div class="control-group">
+                            <h4>Acciones</h4>
+                            <button id="startAllVehicles" class="btn-secondary">Encender Todos</button>
+                            <button id="stopAllVehicles" class="btn-secondary">Apagar Todos</button>
+                            <button id="vehicleStats" class="btn-info">Ver Estadísticas</button>
+                        </div>
+                    </div>
+                    
+                    <div id="vehicleGarage" class="vehicle-garage">
+                        <h4>Garaje (0 vehículos)</h4>
+                        <div id="vehicleList" class="vehicle-list"></div>
+                    </div>
+                    
+                    <div id="vehicleLogs" class="logs-area">
+                        <h4>Registro de Actividad:</h4>
+                        <div class="logs-content"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 4: Generics -->
+        <section id="generics" class="section">
+            <div class="container">
+                <h2>🔧 Ejercicio 4: Generics y Utilidades</h2>
+                
+                <div class="exercise-card">
+                    <h3>Contenedor Genérico</h3>
+                    <p>Implementación de estructuras de datos genéricas:</p>
+                    
+                    <div class="generics-demo">
+                        <div class="container-controls">
+                            <div class="container-type">
+                                <h4>Contenedor de Números</h4>
+                                <input type="number" id="numberInput" placeholder="Número">
+                                <button id="addNumber" class="btn-primary">Agregar</button>
+                                <div class="container-display" id="numberContainer">[]</div>
+                                <div class="container-actions">
+                                    <button id="sortNumbers" class="btn-secondary">Ordenar</button>
+                                    <button id="clearNumbers" class="btn-danger">Limpiar</button>
+                                </div>
+                            </div>
+                            
+                            <div class="container-type">
+                                <h4>Contenedor de Strings</h4>
+                                <input type="text" id="textInput" placeholder="Texto">
+                                <button id="addText" class="btn-primary">Agregar</button>
+                                <div class="container-display" id="textContainer">[]</div>
+                                <div class="container-actions">
+                                    <button id="sortTexts" class="btn-secondary">Ordenar</button>
+                                    <button id="clearTexts" class="btn-danger">Limpiar</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="generic-stats">
+                            <h4>Estadísticas:</h4>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <span class="stat-label">Números:</span>
+                                    <span class="stat-value" id="numberCount">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Textos:</span>
+                                    <span class="stat-value" id="textCount">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Total:</span>
+                                    <span class="stat-value" id="totalCount">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 5: Proyecto -->
+        <section id="proyecto" class="section">
+            <div class="container">
+                <h2>📱 Proyecto: Aplicación de Notas</h2>
+                
+                <div class="exercise-card">
+                    <h3>Gestión de Notas con TypeScript</h3>
+                    <p>Aplicación completa usando todos los conceptos de TypeScript:</p>
+                    
+                    <div class="notes-app">
+                        <div class="notes-sidebar">
+                            <div class="notes-header">
+                                <h4>Mis Notas</h4>
+                                <button id="newNote" class="btn-primary">+ Nueva</button>
+                            </div>
+                            
+                            <div class="notes-filters">
+                                <select id="categoryFilter">
+                                    <option value="all">Todas las categorías</option>
+                                    <option value="personal">Personal</option>
+                                    <option value="trabajo">Trabajo</option>
+                                    <option value="ideas">Ideas</option>
+                                    <option value="recordatorios">Recordatorios</option>
+                                </select>
+                                
+                                <input type="text" id="searchNotes" placeholder="Buscar notas...">
+                            </div>
+                            
+                            <div id="notesList" class="notes-list">
+                                <div class="empty-notes">
+                                    <p>No hay notas aún.</p>
+                                    <p>¡Crea tu primera nota!</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="notes-editor">
+                            <div id="noteEditor" class="note-editor-content">
+                                <div class="editor-placeholder">
+                                    <h3>✏️ Selecciona una nota o crea una nueva</h3>
+                                    <p>Usa el botón "+ Nueva" para comenzar</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="notes-stats">
+                        <div class="stats-cards">
+                            <div class="stat-card">
+                                <div class="stat-icon">📝</div>
+                                <div class="stat-info">
+                                    <span class="stat-number" id="totalNotes">0</span>
+                                    <span class="stat-label">Total Notas</span>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon">📂</div>
+                                <div class="stat-info">
+                                    <span class="stat-number" id="categoriesCount">0</span>
+                                    <span class="stat-label">Categorías</span>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon">💾</div>
+                                <div class="stat-info">
+                                    <span class="stat-number" id="lastSaved">Nunca</span>
+                                    <span class="stat-label">Último Guardado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>TypeScript Learning</h4>
+                <p>Ejercicios prácticos para dominar TypeScript y el desarrollo web moderno.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="https://www.typescriptlang.org/docs/" target="_blank">Documentación oficial</a></li>
+                    <li><a href="https://www.typescriptlang.org/play" target="_blank">TypeScript Playground</a></li>
+                    <li><a href="https://github.com/microsoft/TypeScript" target="_blank">GitHub Repository</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>DevSeniorCode</h4>
+                <p>academy@devseniorcode.com</p>
+                <p>@devseniorcode</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 DevSeniorCode. Ejercicios de TypeScript - Clase 7</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="dist/index.js"></script>
+</body>
+</html>

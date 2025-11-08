@@ -1,0 +1,21 @@
+{
+  "name": "typescript-ejercicios-clase7",
+  "version": "1.0.0",
+  "description": "Ejercicios prácticos de TypeScript - Clase 7",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node dist/index.js",
+    "dev": "tsc --watch",
+    "serve": "live-server --port=3000 --open=/index.html",
+    "clean": "rimraf dist"
+  },
+  "keywords": ["typescript", "javascript", "dom", "ejercicios"],
+  "author": "DevSeniorCode",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^18.0.0"
+  }
+}
