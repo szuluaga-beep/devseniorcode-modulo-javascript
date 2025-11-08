@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid & Flexbox - Ejercicios</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navegación Principal -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>🎨 CSS Master</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#flexbox">Flexbox</a></li>
+                <li><a href="#grid">Grid</a></li>
+                <li><a href="#layouts">Layouts</a></li>
+                <li><a href="#responsive">Responsive</a></li>
+            </ul>
+            <button class="nav-toggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Header Principal -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Maquetación Avanzada con CSS</h1>
+            <p>Aprende Flexbox y CSS Grid para crear layouts modernos y responsivos</p>
+            <button class="cta-button">Comenzar Ejercicios</button>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        
+        <!-- Sección Flexbox -->
+        <section id="flexbox" class="section">
+            <div class="container">
+                <h2>🔄 Ejercicios de Flexbox</h2>
+                
+                <!-- Ejercicio 1: Cards Flexibles -->
+                <div class="exercise">
+                    <h3>1. Cards Responsivas</h3>
+                    <div class="flex-cards">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>🚀 Desarrollo</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Aprende las últimas tecnologías de desarrollo web.</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn-primary">Explorar</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>🎨 Diseño</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Crea interfaces atractivas y funcionales con CSS moderno.</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn-primary">Explorar</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>📱 Mobile</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Desarrolla aplicaciones móviles nativas y web progresivas.</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn-primary">Explorar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 2: Barra de Navegación -->
+                <div class="exercise">
+                    <h3>2. Navegación Flexible</h3>
+                    <nav class="flex-nav">
+                        <div class="nav-brand">Brand</div>
+                        <ul class="nav-menu">
+                            <li><a href="#">Inicio</a></li>
+                            <li><a href="#">Servicios</a></li>
+                            <li><a href="#">Acerca</a></li>
+                            <li><a href="#">Contacto</a></li>
+                        </ul>
+                        <div class="nav-actions">
+                            <button class="btn-outline">Login</button>
+                            <button class="btn-primary">Registro</button>
+                        </div>
+                    </nav>
+                </div>
+
+                <!-- Ejercicio 3: Centro Perfecto -->
+                <div class="exercise">
+                    <h3>3. Centrado Perfecto</h3>
+                    <div class="center-demo">
+                        <div class="centered-content">
+                            <h4>🎯 Perfectamente Centrado</h4>
+                            <p>Tanto horizontal como verticalmente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección CSS Grid -->
+        <section id="grid" class="section">
+            <div class="container">
+                <h2>📐 Ejercicios de CSS Grid</h2>
+                
+                <!-- Ejercicio 1: Layout de Página -->
+                <div class="exercise">
+                    <h3>1. Layout de Página Completo</h3>
+                    <div class="page-layout-demo">
+                        <header class="page-header">Header</header>
+                        <nav class="page-nav">Navigation</nav>
+                        <main class="page-main">
+                            <h4>Contenido Principal</h4>
+                            <p>Este es el área principal del contenido.</p>
+                        </main>
+                        <aside class="page-sidebar">
+                            <h5>Sidebar</h5>
+                            <ul>
+                                <li>Enlace 1</li>
+                                <li>Enlace 2</li>
+                                <li>Enlace 3</li>
+                            </ul>
+                        </aside>
+                        <footer class="page-footer">Footer</footer>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 2: Galería de Imágenes -->
+                <div class="exercise">
+                    <h3>2. Galería de Imágenes Masonry</h3>
+                    <div class="image-gallery">
+                        <div class="gallery-item tall">
+                            <img src="https://picsum.photos/300/400?random=1" alt="Imagen 1">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://picsum.photos/300/200?random=2" alt="Imagen 2">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://picsum.photos/300/200?random=3" alt="Imagen 3">
+                        </div>
+                        <div class="gallery-item wide">
+                            <img src="https://picsum.photos/600/200?random=4" alt="Imagen 4">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://picsum.photos/300/200?random=5" alt="Imagen 5">
+                        </div>
+                        <div class="gallery-item tall">
+                            <img src="https://picsum.photos/300/400?random=6" alt="Imagen 6">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 3: Dashboard -->
+                <div class="exercise">
+                    <h3>3. Dashboard con Widgets</h3>
+                    <div class="dashboard">
+                        <div class="widget chart">
+                            <h4>📊 Estadísticas</h4>
+                            <div class="chart-placeholder">Gráfico de barras</div>
+                        </div>
+                        <div class="widget users">
+                            <h4>👥 Usuarios</h4>
+                            <div class="user-stats">
+                                <div class="stat">
+                                    <span class="number">1,234</span>
+                                    <span class="label">Activos</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="number">567</span>
+                                    <span class="label">Nuevos</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget activity">
+                            <h4>📈 Actividad</h4>
+                            <ul class="activity-list">
+                                <li>Usuario A se registró</li>
+                                <li>Nueva venta realizada</li>
+                                <li>Mensaje recibido</li>
+                            </ul>
+                        </div>
+                        <div class="widget calendar">
+                            <h4>📅 Calendario</h4>
+                            <div class="calendar-placeholder">Vista mensual</div>
+                        </div>
+                        <div class="widget notifications">
+                            <h4>🔔 Notificaciones</h4>
+                            <div class="notification-item">Nueva actualización disponible</div>
+                            <div class="notification-item">Respaldo completado</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Layouts Combinados -->
+        <section id="layouts" class="section">
+            <div class="container">
+                <h2>🏗️ Layouts Combinados</h2>
+                
+                <!-- Ejercicio: E-commerce Layout -->
+                <div class="exercise">
+                    <h3>Tienda Online Layout</h3>
+                    <div class="ecommerce-layout">
+                        <header class="store-header">
+                            <div class="store-nav">
+                                <div class="store-logo">🛍️ TiendaCSS</div>
+                                <div class="search-bar">
+                                    <input type="search" placeholder="Buscar productos...">
+                                    <button>🔍</button>
+                                </div>
+                                <div class="cart">🛒 (3)</div>
+                            </div>
+                        </header>
+                        
+                        <div class="store-content">
+                            <aside class="filters">
+                                <h4>Filtros</h4>
+                                <div class="filter-group">
+                                    <h5>Categoría</h5>
+                                    <label><input type="checkbox"> Electrónicos</label>
+                                    <label><input type="checkbox"> Ropa</label>
+                                    <label><input type="checkbox"> Hogar</label>
+                                </div>
+                                <div class="filter-group">
+                                    <h5>Precio</h5>
+                                    <input type="range" min="0" max="1000">
+                                </div>
+                            </aside>
+                            
+                            <main class="products">
+                                <div class="products-header">
+                                    <h3>Productos (24 resultados)</h3>
+                                    <select>
+                                        <option>Más relevantes</option>
+                                        <option>Precio: menor a mayor</option>
+                                        <option>Precio: mayor a menor</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="products-grid">
+                                    <div class="product-card">
+                                        <img src="https://picsum.photos/200/200?random=10" alt="Producto">
+                                        <h4>Producto 1</h4>
+                                        <p class="price">$99.99</p>
+                                        <button class="add-to-cart">Agregar al carrito</button>
+                                    </div>
+                                    <div class="product-card">
+                                        <img src="https://picsum.photos/200/200?random=11" alt="Producto">
+                                        <h4>Producto 2</h4>
+                                        <p class="price">$149.99</p>
+                                        <button class="add-to-cart">Agregar al carrito</button>
+                                    </div>
+                                    <div class="product-card">
+                                        <img src="https://picsum.photos/200/200?random=12" alt="Producto">
+                                        <h4>Producto 3</h4>
+                                        <p class="price">$79.99</p>
+                                        <button class="add-to-cart">Agregar al carrito</button>
+                                    </div>
+                                    <div class="product-card">
+                                        <img src="https://picsum.photos/200/200?random=13" alt="Producto">
+                                        <h4>Producto 4</h4>
+                                        <p class="price">$199.99</p>
+                                        <button class="add-to-cart">Agregar al carrito</button>
+                                    </div>
+                                    <div class="product-card">
+                                        <img src="https://picsum.photos/200/200?random=14" alt="Producto">
+                                        <h4>Producto 5</h4>
+                                        <p class="price">$129.99</p>
+                                        <button class="add-to-cart">Agregar al carrito</button>
+                                    </div>
+                                    <div class="product-card">
+                                        <img src="https://picsum.photos/200/200?random=15" alt="Producto">
+                                        <h4>Producto 6</h4>
+                                        <p class="price">$89.99</p>
+                                        <button class="add-to-cart">Agregar al carrito</button>
+                                    </div>
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Responsive -->
+        <section id="responsive" class="section">
+            <div class="container">
+                <h2>📱 Responsive Design</h2>
+                <div class="exercise">
+                    <h3>Componentes Adaptativos</h3>
+                    <p>Redimensiona la ventana para ver cómo se adaptan los componentes:</p>
+                    
+                    <div class="responsive-demo">
+                        <div class="responsive-card">
+                            <h4>Mobile First</h4>
+                            <p>Este componente se adapta automáticamente a diferentes tamaños de pantalla.</p>
+                        </div>
+                        <div class="responsive-card">
+                            <h4>Flexible</h4>
+                            <p>Utiliza CSS Grid y Flexbox para mantener la consistencia en todos los dispositivos.</p>
+                        </div>
+                        <div class="responsive-card">
+                            <h4>Moderno</h4>
+                            <p>Implementa las mejores prácticas de diseño web responsivo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>DevSeniorCode</h4>
+                <p>Aprende desarrollo web moderno con las mejores prácticas.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="#">Documentación</a></li>
+                    <li><a href="#">Ejercicios</a></li>
+                    <li><a href="#">Proyectos</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul>
+                    <li>academy@devseniorcode.com</li>
+                    <li>@devseniorcode</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DevSeniorCode. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
