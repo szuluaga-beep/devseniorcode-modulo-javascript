@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios DOM - Clase 5</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>🎯 Ejercicios de Manipulación del DOM</h1>
+    </header>
+
+    <main>
+        <!-- Ejercicio 1: Contador -->
+        <section class="ejercicio">
+            <h2>📊 Ejercicio 1: Contador Interactivo</h2>
+            <div class="contador-container">
+                <button id="decrementar">➖</button>
+                <span id="contador">0</span>
+                <button id="incrementar">➕</button>
+            </div>
+            <button id="reset">🔄 Reset</button>
+        </section>
+
+        <!-- Ejercicio 2: Cambio de Colores -->
+        <section class="ejercicio">
+            <h2>🎨 Ejercicio 2: Cambio de Colores</h2>
+            <div class="color-container">
+                <div id="color-display" class="color-box"></div>
+                <div class="color-buttons">
+                    <button class="color-btn" data-color="#ff6b6b">Rojo</button>
+                    <button class="color-btn" data-color="#4ecdc4">Azul</button>
+                    <button class="color-btn" data-color="#45b7d1">Celeste</button>
+                    <button class="color-btn" data-color="#96ceb4">Verde</button>
+                    <button class="color-btn" data-color="#feca57">Amarillo</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ejercicio 3: Lista de Tareas -->
+        <section class="ejercicio">
+            <h2>📝 Ejercicio 3: Lista de Tareas</h2>
+            <div class="todo-container">
+                <div class="input-group">
+                    <input type="text" id="nueva-tarea" placeholder="Escribe una nueva tarea...">
+                    <button id="agregar-tarea">➕ Agregar</button>
+                </div>
+                <ul id="lista-tareas"></ul>
+                <button id="limpiar-completadas">🗑️ Limpiar Completadas</button>
+            </div>
+        </section>
+
+        <!-- Ejercicio 4: Galería de Imágenes -->
+        <section class="ejercicio">
+            <h2>🖼️ Ejercicio 4: Galería de Imágenes</h2>
+            <div class="galeria-container">
+                <div class="imagen-principal">
+                    <img id="imagen-grande" src="https://picsum.photos/400/300?random=1" alt="Imagen principal">
+                </div>
+                <div class="miniaturas">
+                    <img class="miniatura active" src="https://picsum.photos/400/300?random=1" data-full="https://picsum.photos/400/300?random=1" alt="Imagen 1">
+                    <img class="miniatura" src="https://picsum.photos/400/300?random=2" data-full="https://picsum.photos/400/300?random=2" alt="Imagen 2">
+                    <img class="miniatura" src="https://picsum.photos/400/300?random=3" data-full="https://picsum.photos/400/300?random=3" alt="Imagen 3">
+                    <img class="miniatura" src="https://picsum.photos/400/300?random=4" data-full="https://picsum.photos/400/300?random=4" alt="Imagen 4">
+                </div>
+            </div>
+        </section>
+
+        <!-- Ejercicio 5: Calculadora -->
+        <section class="ejercicio">
+            <h2>🧮 Proyecto: Calculadora Interactiva</h2>
+            <div class="calculadora">
+                <div class="display">
+                    <input type="text" id="resultado" readonly>
+                </div>
+                <div class="botones">
+                    <button class="btn-clear" onclick="limpiar()">C</button>
+                    <button class="btn-operator" onclick="agregarOperador('/')">/</button>
+                    <button class="btn-operator" onclick="agregarOperador('*')">×</button>
+                    <button class="btn-clear" onclick="borrarUltimo()">⌫</button>
+                    
+                    <button class="btn-number" onclick="agregarNumero('7')">7</button>
+                    <button class="btn-number" onclick="agregarNumero('8')">8</button>
+                    <button class="btn-number" onclick="agregarNumero('9')">9</button>
+                    <button class="btn-operator" onclick="agregarOperador('-')">-</button>
+                    
+                    <button class="btn-number" onclick="agregarNumero('4')">4</button>
+                    <button class="btn-number" onclick="agregarNumero('5')">5</button>
+                    <button class="btn-number" onclick="agregarNumero('6')">6</button>
+                    <button class="btn-operator" onclick="agregarOperador('+')">+</button>
+                    
+                    <button class="btn-number" onclick="agregarNumero('1')">1</button>
+                    <button class="btn-number" onclick="agregarNumero('2')">2</button>
+                    <button class="btn-number" onclick="agregarNumero('3')">3</button>
+                    <button class="btn-equals" onclick="calcular()" rowspan="2">=</button>
+                    
+                    <button class="btn-number span-2" onclick="agregarNumero('0')">0</button>
+                    <button class="btn-number" onclick="agregarNumero('.')">.</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
