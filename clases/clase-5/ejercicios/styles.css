@@ -10,6 +10,7 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     color: #333;
+    transition: background 0.3s ease;
 }
 
 header {
@@ -27,9 +28,9 @@ header h1 {
 }
 
 main {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 2rem 2rem;
 }
 
 /* Estilos de Secciones */
@@ -48,290 +49,132 @@ main {
 
 .ejercicio h2 {
     color: #4a5568;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     font-size: 1.8rem;
     border-bottom: 3px solid #667eea;
     padding-bottom: 0.5rem;
 }
 
-/* Ejercicio 1: Contador */
-.contador-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+.ejercicio p {
+    color: #718096;
     margin-bottom: 1rem;
+    font-size: 1.05rem;
 }
 
-#contador {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #667eea;
-    min-width: 100px;
-    text-align: center;
-    background: #f7fafc;
-    padding: 1rem;
-    border-radius: 10px;
-    border: 2px solid #e2e8f0;
-}
-
-button {
+/* Botones Principales */
+.btn-principal {
     background: #667eea;
     color: white;
     border: none;
-    padding: 1rem 1.5rem;
+    padding: 1rem 2rem;
     border-radius: 10px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 600;
 }
 
-button:hover {
+.btn-principal:hover {
     background: #5a67d8;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
-#reset {
-    background: #e53e3e;
-    margin-top: 1rem;
+.btn-principal:active {
+    transform: translateY(-1px);
 }
 
-#reset:hover {
-    background: #c53030;
+/* EJERCICIO 1: CAMBIO DE COLOR SIMPLE */
+#color-actual {
+    color: #667eea;
+    font-size: 1.2rem;
 }
 
-/* Ejercicio 2: Cambio de Colores */
-.color-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-
-.color-box {
-    width: 200px;
-    height: 200px;
-    border-radius: 20px;
+/* EJERCICIO 2: MOSTRAR Y OCULTAR */
+.caja-contenido {
     background: #f7fafc;
-    border: 3px solid #e2e8f0;
-    transition: all 0.5s ease;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    margin-top: 1.5rem;
+    color: #4a5568;
+    transition: all 0.3s ease;
+    display: block;
 }
 
-.color-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.color-btn {
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    font-size: 1rem;
-}
-
-/* Ejercicio 3: Lista de Tareas */
-.todo-container {
+/* EJERCICIO 4: CAMBIO DE TEXTO */
+.input-texto {
+    width: 100%;
     max-width: 500px;
-    margin: 0 auto;
-}
-
-.input-group {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-#nueva-tarea {
-    flex: 1;
     padding: 1rem;
     border: 2px solid #e2e8f0;
     border-radius: 10px;
     font-size: 1rem;
     outline: none;
     transition: border-color 0.3s ease;
+    margin-bottom: 1.5rem;
 }
 
-#nueva-tarea:focus {
+.input-texto:focus {
     border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-#lista-tareas {
-    list-style: none;
-    margin-bottom: 1rem;
-}
-
-.tarea-item {
-    background: #f7fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-.tarea-item:hover {
+.texto-dinamico {
     background: #edf2f7;
-}
-
-.tarea-item.completada {
-    opacity: 0.6;
-    text-decoration: line-through;
-    background: #e6fffa;
-}
-
-.btn-eliminar {
-    background: #e53e3e;
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-}
-
-#limpiar-completadas {
-    background: #38a169;
-}
-
-#limpiar-completadas:hover {
-    background: #2f855a;
-}
-
-/* Ejercicio 4: Galería */
-.galeria-container {
-    text-align: center;
-}
-
-.imagen-principal {
-    margin-bottom: 1rem;
-}
-
-#imagen-grande {
-    max-width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-}
-
-.miniaturas {
+    padding: 1.5rem;
+    border-radius: 10px;
+    color: #2d3748;
+    font-size: 1.3rem;
+    font-weight: 500;
+    border-left: 4px solid #667eea;
+    min-height: 60px;
     display: flex;
+    align-items: center;
+}
+
+/* EJERCICIO 5: CONTADOR */
+.contador-container {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
 }
 
-.miniatura {
-    width: 80px;
+.btn-contador {
+    background: #667eea;
+    color: white;
+    width: 60px;
     height: 60px;
-    object-fit: cover;
-    border-radius: 8px;
+    border-radius: 50%;
+    border: none;
+    font-size: 2rem;
     cursor: pointer;
-    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.3s ease;
-    border: 3px solid transparent;
+    font-weight: bold;
 }
 
-.miniatura:hover {
-    opacity: 1;
+.btn-contador:hover {
+    background: #5a67d8;
     transform: scale(1.1);
 }
 
-.miniatura.active {
-    opacity: 1;
-    border-color: #667eea;
-}
-
-/* Calculadora */
-.calculadora {
-    max-width: 300px;
-    margin: 0 auto;
-    background: #2d3748;
-    border-radius: 20px;
-    padding: 1.5rem;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-}
-
-.display {
-    margin-bottom: 1rem;
-}
-
-#resultado {
-    width: 100%;
-    height: 60px;
-    background: #1a202c;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-size: 2rem;
-    text-align: right;
-    padding: 0 1rem;
-    outline: none;
-}
-
-.botones {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.5rem;
-}
-
-.calculadora button {
-    height: 60px;
-    border-radius: 10px;
-    font-size: 1.2rem;
+.numero-grande {
+    font-size: 3rem;
     font-weight: bold;
-    transition: all 0.2s ease;
-}
-
-.btn-number {
-    background: #4a5568;
-    color: white;
-}
-
-.btn-number:hover {
-    background: #2d3748;
-}
-
-.btn-operator {
-    background: #667eea;
-    color: white;
-}
-
-.btn-operator:hover {
-    background: #5a67d8;
-}
-
-.btn-equals {
-    background: #38a169;
-    color: white;
-    grid-row: span 2;
-}
-
-.btn-equals:hover {
-    background: #2f855a;
-}
-
-.btn-clear {
-    background: #e53e3e;
-    color: white;
-}
-
-.btn-clear:hover {
-    background: #c53030;
-}
-
-.span-2 {
-    grid-column: span 2;
+    color: #667eea;
+    min-width: 100px;
+    text-align: center;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
     main {
-        padding: 0 1rem;
+        padding: 0 1rem 2rem;
     }
     
     .ejercicio {
@@ -342,21 +185,24 @@ button:hover {
         font-size: 2rem;
     }
     
-    .color-buttons {
-        gap: 0.5rem;
+    .ejercicio h2 {
+        font-size: 1.5rem;
     }
     
-    .color-btn {
-        padding: 0.6rem 1rem;
-        font-size: 0.9rem;
+    .btn-principal {
+        width: 100%;
+        padding: 0.9rem 1.5rem;
+    }
+    
+    .input-texto {
+        max-width: 100%;
     }
     
     .contador-container {
-        flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
     }
     
-    #contador {
+    .numero-grande {
         font-size: 2.5rem;
     }
 }

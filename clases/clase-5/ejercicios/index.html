@@ -12,93 +12,39 @@
     </header>
 
     <main>
-        <!-- Ejercicio 1: Contador -->
+        <!-- Ejercicio 1: Cambio de Color Simple -->
         <section class="ejercicio">
-            <h2>📊 Ejercicio 1: Contador Interactivo</h2>
+            <h2>� Ejercicio 1: Cambio de Color Simple</h2>
+            <p>Haz click en el botón para cambiar el color de fondo</p>
+            <button id="btn-color" class="btn-principal">Cambiar Color</button>
+            <p id="color-actual" style="margin-top: 1rem; font-weight: bold;"></p>
+        </section>
+
+        <!-- Ejercicio 2: Mostrar y Ocultar Elemento -->
+        <section class="ejercicio">
+            <h2>👁️ Ejercicio 2: Mostrar y Ocultar Elemento</h2>
+            <button id="btn-toggle" class="btn-principal">Mostrar/Ocultar</button>
+            <div id="caja-oculta" class="caja-contenido">
+                Esta es una caja que puede mostrarse y ocultarse
+            </div>
+        </section>
+
+        <!-- Ejercicio 3: Cambio de Texto Dinámico -->
+        <section class="ejercicio">
+            <h2>✏️ Ejercicio 3: Cambio de Texto en Tiempo Real</h2>
+            <input type="text" id="input-texto" class="input-texto" placeholder="Escribe algo...">
+            <p id="texto-dinamico" class="texto-dinamico">Tu texto aparecerá aquí</p>
+        </section>
+
+        <!-- Ejercicio 4: Contador Simple -->
+        <section class="ejercicio">
+            <h2>🔢 Ejercicio 4: Contador Simple</h2>
             <div class="contador-container">
-                <button id="decrementar">➖</button>
-                <span id="contador">0</span>
-                <button id="incrementar">➕</button>
+                <button id="btn-disminuir" class="btn-contador">-</button>
+                <p id="numero-contador" class="numero-grande">0</p>
+                <button id="btn-aumentar" class="btn-contador">+</button>
             </div>
-            <button id="reset">🔄 Reset</button>
-        </section>
-
-        <!-- Ejercicio 2: Cambio de Colores -->
-        <section class="ejercicio">
-            <h2>🎨 Ejercicio 2: Cambio de Colores</h2>
-            <div class="color-container">
-                <div id="color-display" class="color-box"></div>
-                <div class="color-buttons">
-                    <button class="color-btn" data-color="#ff6b6b">Rojo</button>
-                    <button class="color-btn" data-color="#4ecdc4">Azul</button>
-                    <button class="color-btn" data-color="#45b7d1">Celeste</button>
-                    <button class="color-btn" data-color="#96ceb4">Verde</button>
-                    <button class="color-btn" data-color="#feca57">Amarillo</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Ejercicio 3: Lista de Tareas -->
-        <section class="ejercicio">
-            <h2>📝 Ejercicio 3: Lista de Tareas</h2>
-            <div class="todo-container">
-                <div class="input-group">
-                    <input type="text" id="nueva-tarea" placeholder="Escribe una nueva tarea...">
-                    <button id="agregar-tarea">➕ Agregar</button>
-                </div>
-                <ul id="lista-tareas"></ul>
-                <button id="limpiar-completadas">🗑️ Limpiar Completadas</button>
-            </div>
-        </section>
-
-        <!-- Ejercicio 4: Galería de Imágenes -->
-        <section class="ejercicio">
-            <h2>🖼️ Ejercicio 4: Galería de Imágenes</h2>
-            <div class="galeria-container">
-                <div class="imagen-principal">
-                    <img id="imagen-grande" src="https://picsum.photos/400/300?random=1" alt="Imagen principal">
-                </div>
-                <div class="miniaturas">
-                    <img class="miniatura active" src="https://picsum.photos/400/300?random=1" data-full="https://picsum.photos/400/300?random=1" alt="Imagen 1">
-                    <img class="miniatura" src="https://picsum.photos/400/300?random=2" data-full="https://picsum.photos/400/300?random=2" alt="Imagen 2">
-                    <img class="miniatura" src="https://picsum.photos/400/300?random=3" data-full="https://picsum.photos/400/300?random=3" alt="Imagen 3">
-                    <img class="miniatura" src="https://picsum.photos/400/300?random=4" data-full="https://picsum.photos/400/300?random=4" alt="Imagen 4">
-                </div>
-            </div>
-        </section>
-
-        <!-- Ejercicio 5: Calculadora -->
-        <section class="ejercicio">
-            <h2>🧮 Proyecto: Calculadora Interactiva</h2>
-            <div class="calculadora">
-                <div class="display">
-                    <input type="text" id="resultado" readonly>
-                </div>
-                <div class="botones">
-                    <button class="btn-clear" onclick="limpiar()">C</button>
-                    <button class="btn-operator" onclick="agregarOperador('/')">/</button>
-                    <button class="btn-operator" onclick="agregarOperador('*')">×</button>
-                    <button class="btn-clear" onclick="borrarUltimo()">⌫</button>
-                    
-                    <button class="btn-number" onclick="agregarNumero('7')">7</button>
-                    <button class="btn-number" onclick="agregarNumero('8')">8</button>
-                    <button class="btn-number" onclick="agregarNumero('9')">9</button>
-                    <button class="btn-operator" onclick="agregarOperador('-')">-</button>
-                    
-                    <button class="btn-number" onclick="agregarNumero('4')">4</button>
-                    <button class="btn-number" onclick="agregarNumero('5')">5</button>
-                    <button class="btn-number" onclick="agregarNumero('6')">6</button>
-                    <button class="btn-operator" onclick="agregarOperador('+')">+</button>
-                    
-                    <button class="btn-number" onclick="agregarNumero('1')">1</button>
-                    <button class="btn-number" onclick="agregarNumero('2')">2</button>
-                    <button class="btn-number" onclick="agregarNumero('3')">3</button>
-                    <button class="btn-equals" onclick="calcular()" rowspan="2">=</button>
-                    
-                    <button class="btn-number span-2" onclick="agregarNumero('0')">0</button>
-                    <button class="btn-number" onclick="agregarNumero('.')">.</button>
-                </div>
-            </div>
+            <button id="btn-reset" class="btn-principal" style="margin-top: 1rem;">Reset</button>
         </section>
     </main>
 

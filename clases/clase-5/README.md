@@ -9,7 +9,7 @@
 - Crear páginas web interactivas y dinámicas
 
 ---
-
+//TODO: https://resend.com/onboarding
 ## 🧠 Conceptos Clave
 
 ### ¿Qué es el DOM?
@@ -89,18 +89,18 @@ formulario.addEventListener('submit', manejarEnvio);
 
 ---
 
-## 💻 Ejercicios Prácticos
+## 💻 Ejemplos Prácticos
 
-### Ejercicio 1: Contador Interactivo
+### Ejemplo 1: Contador Interactivo
 Crear un contador que incremente y decremente con botones.
 
-### Ejercicio 2: Cambio de Colores
+### Ejemplo 2: Cambio de Colores
 Crear una página que cambie de color al hacer clic en botones.
 
-### Ejercicio 3: Lista de Tareas
+### Ejemplo 3: Lista de Tareas
 Implementar una lista de tareas donde se puedan agregar y eliminar elementos.
 
-### Ejercicio 4: Galería de Imágenes
+### Ejemplo 4: Galería de Imágenes
 Crear una galería que muestre diferentes imágenes al hacer clic en miniaturas.
 
 ---
