@@ -1,15 +1,26 @@
 # 🎯 Clase 5: Interactividad con el DOM
 
-## 📚 Objetivos de la Clase
+## � Cronograma de Actividades
+
+| Fase | Descripción | Objetivo |
+|------|-------------|----------|
+| **Fase 1** | Actualización del Portafolio | Implementar Dark Mode y Light Mode en el portafolio existente |
+| **Fase 2** | Conceptos de DOM | Aprender los conceptos fundamentales de manipulación del DOM |
+| **Fase 3** | Ejercicios Prácticos | Implementar 4 ejercicios interactivos: cambio de color, toggle, texto dinámico y contador |
+| **Fase 4** | Proyecto Integrador Módulo 1 | Proyecto: aplicación web interactiva integrando todos los conceptos del módulo |
+
+---
+
+## �📚 Objetivos de la Clase
 
 - Comprender qué es el DOM (Document Object Model)
 - Aprender a seleccionar elementos HTML con JavaScript
 - Modificar contenido y atributos de elementos
 - Gestionar eventos del usuario
 - Crear páginas web interactivas y dinámicas
+- Implementar temas oscuro y claro en aplicaciones web
 
 ---
-//TODO: https://resend.com/onboarding
 ## 🧠 Conceptos Clave
 
 ### ¿Qué es el DOM?
@@ -87,6 +98,131 @@ elemento.addEventListener('keydown', manejarTecla);
 formulario.addEventListener('submit', manejarEnvio);
 ```
 
+### Manipulación de Clases CSS
+
+```javascript
+// Agregar una clase
+elemento.classList.add('activo');
+
+// Eliminar una clase
+elemento.classList.remove('inactivo');
+
+// Alternar una clase
+elemento.classList.toggle('visible');
+
+// Verificar si tiene una clase
+if (elemento.classList.contains('especial')) {
+    console.log('Tiene la clase especial');
+}
+
+// Reemplazar una clase por otra
+elemento.classList.replace('viejo-estilo', 'nuevo-estilo');
+```
+
+### Creación y Eliminación de Elementos
+
+```javascript
+// Crear un nuevo elemento
+const nuevoDiv = document.createElement('div');
+nuevoDiv.textContent = 'Contenido del nuevo elemento';
+nuevoDiv.classList.add('mi-clase');
+
+// Agregar al DOM
+contenedor.appendChild(nuevoDiv);
+contenedor.insertBefore(nuevoDiv, elemento);
+
+// Clonar un elemento
+const clon = elemento.cloneNode(true); // true = copia profunda
+
+// Eliminar un elemento
+elemento.remove();
+elemento.parentNode.removeChild(elemento);
+```
+
+### Navegación por el DOM (DOM Traversal)
+
+```javascript
+// Acceder a elementos relacionados
+elemento.parentElement;          // Elemento padre
+elemento.children;               // Hijos directos
+elemento.firstChild;             // Primer hijo (puede ser nodo de texto)
+elemento.lastChild;              // Último hijo
+elemento.nextElementSibling;     // Siguiente elemento hermano
+elemento.previousElementSibling; // Elemento hermano anterior
+
+// Ejemplo práctico
+const padre = elemento.parentElement;
+const hermanos = padre.children;
+```
+
+### Manipulación de Atributos
+
+```javascript
+// Obtener atributo
+const valor = elemento.getAttribute('data-id');
+
+// Establecer atributo
+elemento.setAttribute('data-id', '123');
+elemento.setAttribute('disabled', 'disabled');
+
+// Eliminar atributo
+elemento.removeAttribute('disabled');
+
+// Verificar si tiene atributo
+if (elemento.hasAttribute('data-especial')) {
+    console.log('Tiene atributo data-especial');
+}
+
+// Acceso directo a atributos comunes
+elemento.id = 'nuevo-id';
+elemento.title = 'Información';
+elemento.href = 'https://ejemplo.com';
+```
+
+### Propiedades y Métodos Útiles del DOM
+
+```javascript
+// Propiedades de dimensiones y posición
+elemento.offsetWidth;      // Ancho total (incluye border)
+elemento.offsetHeight;     // Alto total
+elemento.clientWidth;      // Ancho sin border
+elemento.clientHeight;     // Alto sin border
+elemento.scrollTop;        // Desplazamiento vertical
+elemento.scrollLeft;       // Desplazamiento horizontal
+
+// Obtener información
+elemento.innerHTML;        // HTML interno
+elemento.textContent;      // Texto sin HTML
+elemento.outerHTML;        // HTML del elemento incluido
+
+// Métodos de búsqueda avanzada
+elemento.querySelector('selector');      // Primer coincidencia
+elemento.querySelectorAll('selector');   // Todas coincidencias
+```
+
+### Dark Mode y Light Mode
+
+```javascript
+// Detectar preferencia del sistema
+const prefiereOscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+// Cambiar tema
+const root = document.documentElement;
+root.style.setProperty('--color-fondo', '#1a1a1a');
+root.style.setProperty('--color-texto', '#ffffff');
+
+// Guardar preferencia en localStorage
+localStorage.setItem('tema', 'oscuro');
+const temaSguardado = localStorage.getItem('tema');
+
+// Cambio dinámico de tema
+function cambiarTema(tema) {
+    document.body.classList.remove('claro', 'oscuro');
+    document.body.classList.add(tema);
+    localStorage.setItem('tema-activo', tema);
+}
+```
+
 ---
 
 ## 💻 Ejemplos Prácticos
@@ -122,26 +258,22 @@ Desarrollaremos una calculadora funcional que combine todos los conceptos aprend
 - [MDN - Eventos](https://developer.mozilla.org/es/docs/Web/Events)
 - [JavaScript DOM Manipulation](https://www.w3schools.com/js/js_htmldom.asp)
 
----
-
-## 🏠 Tareas para Casa
-
-1. **Práctica de Selectors**: Crear una página con 10 elementos diferentes y practicar todos los métodos de selección.
-
-2. **Event Playground**: Implementar una página que responda a al menos 5 eventos diferentes (click, mouseover, keydown, etc.).
-
-3. **Mini Proyecto**: Crear un formulario de contacto que valide los datos en tiempo real y muestre mensajes de error/éxito.
-
----
+----
 
 ## ✅ Checklist de Conceptos
 
 - [ ] Entiendo qué es el DOM y cómo funciona
-- [ ] Puedo seleccionar elementos usando diferentes métodos
-- [ ] Sé cómo modificar contenido y atributos
-- [ ] Puedo agregar y manejar eventos
-- [ ] Entiendo el flujo de eventos (event bubbling)
-- [ ] Puedo crear interacciones básicas en una página web
+- [ ] Puedo seleccionar elementos usando diferentes métodos (getElementById, querySelector, querySelectorAll, etc.)
+- [ ] Sé cómo modificar contenido y atributos (innerHTML, textContent, setAttribute)
+- [ ] Puedo agregar y manejar eventos (addEventListener)
+- [ ] Entiendo el flujo de eventos (event bubbling y capturing)
+- [ ] Domino la manipulación de clases CSS (classList.add, remove, toggle)
+- [ ] Puedo crear y eliminar elementos dinámicamente (createElement, appendChild, remove)
+- [ ] Sé navegar por el DOM (parentElement, children, nextElementSibling)
+- [ ] Entiendo cómo trabajar con atributos (getAttribute, setAttribute, removeAttribute)
+- [ ] Puedo implementar un sistema de Dark Mode/Light Mode
+- [ ] Conozco localStorage para persistir datos del usuario
+- [ ] Puedo crear interacciones complejas en una página web
 
 ---
 
