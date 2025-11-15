@@ -32,7 +32,6 @@ Debes enviar un **documento PDF o Word** que contenga:
 ### 📧 Forma de Entrega
 
 El documento PDF/Word debe enviarse por:
-- Email al mentor/instructor
 - A través la plataforma designada
 
 ---
@@ -84,7 +83,7 @@ Puedes elegir entre estas 4 APIs:
 
 | API | Descripción | Endpoint | Docs |
 | :--- | :--- | :--- | :--- |
-| **Countries** | Información de países | `https://restcountries.com/v3.1/all` | [Docs](https://restcountries.com) |
+| **Rick and Morty** | Personajes de la serie | `https://rickandmortyapi.com/api/character` | [Docs](https://rickandmortyapi.com) |
 | **PokeAPI** | Pokémon | `https://pokeapi.co/api/v2/pokemon` | [Docs](https://pokeapi.co) |
 | **JSONPlaceholder** | Posts, usuarios, comentarios | `https://jsonplaceholder.typicode.com/posts` | [Docs](https://jsonplaceholder.typicode.com) |
 | **API Colombia** | Ciudades, departamentos y municipios de Colombia | `https://api-colombia.com/` | [Docs](https://api-colombia.com/) |
@@ -435,7 +434,7 @@ Tu proyecto debe mostrar dominio de:
 ## 🔗 Recursos Útiles
 
 ### APIs Públicas
-- [REST Countries](https://restcountries.com)
+- [Rick and Morty API](https://rickandmortyapi.com)
 - [PokeAPI](https://pokeapi.co)
 - [JSONPlaceholder](https://jsonplaceholder.typicode.com)
 - [API Colombia](https://api-colombia.com/)
