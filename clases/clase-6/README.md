@@ -1,4 +1,4 @@
-# 🎨 Clase 6: Maquetación Avanzada con CSS
+# 🎨 Clase 6: CSS Avanzado - Flexbox, Grid, JSON y APIs
 
 ## 📚 Objetivos de la Clase
 
@@ -7,6 +7,9 @@
 - Crear diseños modernos y adaptativos
 - Combinar Flexbox y Grid para soluciones óptimas
 - Desarrollar interfaces profesionales y responsivas
+- Comprender **JSON** como formato de datos
+- Consumir **APIs** y trabajar con datos externos
+- Integrar layouts responsivos con datos dinámicos
 
 ---
 
@@ -124,6 +127,174 @@
 
 ---
 
+## 📊 JSON: Formato de Datos Estructurado
+
+### ¿Qué es JSON?
+
+**JSON** (JavaScript Object Notation) es un formato ligero para intercambiar datos. Es el estándar en las APIs modernas.
+
+#### Estructura Básica
+```json
+{
+  "nombre": "Juan",
+  "edad": 25,
+  "activo": true,
+  "habilidades": ["JavaScript", "CSS", "HTML"],
+  "usuario": {
+    "id": 1,
+    "email": "juan@example.com"
+  }
+}
+```
+
+#### Tipos de Datos en JSON
+- **String**: `"hola"` (siempre entre comillas dobles)
+- **Number**: `42`, `3.14`
+- **Boolean**: `true`, `false`
+- **Array**: `[1, 2, 3]`
+- **Object**: `{ "clave": "valor" }`
+- **Null**: `null`
+
+#### Validar JSON
+```javascript
+// Convertir JSON string a objeto
+const datos = JSON.parse(jsonString);
+
+// Convertir objeto a JSON string
+const jsonString = JSON.stringify(objeto);
+
+// Con espacios para legibilidad
+const jsonPretty = JSON.stringify(objeto, null, 2);
+```
+
+### Ejemplo Práctico
+```javascript
+// JSON de una API
+const respuestaJSON = `
+{
+  "personajes": [
+    {
+      "id": 1,
+      "nombre": "Rick Sanchez",
+      "especie": "Humano",
+      "estado": "Vivo",
+      "imagen": "https://..."
+    },
+    {
+      "id": 2,
+      "nombre": "Morty Smith",
+      "especie": "Humano",
+      "estado": "Vivo",
+      "imagen": "https://..."
+    }
+  ]
+`;
+
+// Parsear y usar
+const datos = JSON.parse(respuestaJSON);
+console.log(datos.personajes[0].nombre); // Rick Sanchez
+```
+
+---
+
+## 🌐 APIs: Consumiendo Datos Externos
+
+### ¿Qué es una API?
+
+Una **API** (Application Programming Interface) es un conjunto de reglas que permite a diferentes aplicaciones comunicarse. Las APIs REST usan HTTP para obtener datos.
+
+### Fetch API: Obtener Datos
+
+#### Fetch Básico
+```javascript
+// Obtener datos de una API
+fetch('https://rickandmortyapi.com/api/character')
+  .then(response => response.json()) // Convertir response a JSON
+  .then(data => console.log(data))   // Usar los datos
+  .catch(error => console.error(error)); // Manejar errores
+```
+
+#### Con Async/Await
+```javascript
+async function obtenerPersonajes() {
+  try {
+    const response = await fetch('https://rickandmortyapi.com/api/character');
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+obtenerPersonajes();
+```
+
+#### Con Parámetros
+```javascript
+// API con filtros
+const id = 1;
+fetch(`https://rickandmortyapi.com/api/character/${id}`)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+#### Manejo Completo de Errores
+```javascript
+async function fetchConErrores() {
+  try {
+    // Mostrar loading
+    console.log('Cargando...');
+    
+    const response = await fetch('https://api.example.com/datos');
+    
+    // Verificar si la respuesta es OK (status 200-299)
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
+    }
+    
+    const data = await response.json();
+    console.log('Datos recibidos:', data);
+    return data;
+    
+  } catch (error) {
+    console.error('Error en la búsqueda:', error.message);
+    // Mostrar mensaje al usuario
+  }
+}
+```
+
+### APIs Recomendadas para Practicar
+
+| API | URL Base | Descripción |
+| :--- | :--- | :--- |
+| **Rick and Morty** | `https://rickandmortyapi.com/api` | Personajes de la serie |
+| **PokeAPI** | `https://pokeapi.co/api/v2` | Datos de Pokémon |
+| **API Colombia** | `https://api-colombia.com` | Datos de Colombia |
+| **JSONPlaceholder** | `https://jsonplaceholder.typicode.com` | Datos de prueba |
+
+### Estructura Típica de Respuesta API
+```javascript
+{
+  "info": {
+    "count": 826,
+    "pages": 42,
+    "next": "https://rickandmortyapi.com/api/character?page=2",
+    "prev": null
+  },
+  "results": [
+    {
+      "id": 1,
+      "name": "Rick Sanchez",
+      "status": "Alive",
+      "image": "https://..."
+    }
+  ]
+}
+```
+
+---
+
 ## 🏗️ Patrones de Layout Comunes
 
 ### 1. Layout de Página Típica
@@ -234,32 +405,86 @@
 
 ## 💻 Ejercicios Prácticos
 
-### Ejercicio 1: Layout de Blog
-Crear un layout de blog con header, sidebar, contenido principal y footer.
+### Ejercicio 1: Consumir API Rick and Morty
+- Fetch de personajes de la API
+- Parsear respuesta JSON
+- Renderizar en galería con Grid/Flexbox
+- Mostrar: imagen, nombre, especie, estado
 
-### Ejercicio 2: Galería de Fotos Responsiva
-Implementar una galería que se adapte a diferentes tamaños de pantalla.
+### Ejercicio 2: Filtrar y Buscar
+- Agregar input de búsqueda
+- Filtrar personajes por nombre
+- Usar filter() y find() de arrays
 
-### Ejercicio 3: Dashboard con Grid
-Crear un dashboard con widgets organizados en un grid complejo.
+### Ejercicio 3: Paginación
+- Implementar botones de siguiente/anterior
+- Usar parámetros de URL (?page=2)
+- Actualizar galería dinámicamente
 
-### Ejercicio 4: Navbar Responsiva
-Desarrollar una barra de navegación que se adapte a móvil y desktop.
+### Ejercicio 4: Tarjetas de Pokémon
+- Consumir PokeAPI
+- Mostrar imagen, nombre, tipos
+- Usar Grid responsivo
 
-### Ejercicio 5: Card Layout
-Crear un sistema de cards flexibles y responsivas.
+### Ejercicio 5: Dashboard de Datos
+- Consumir JSONPlaceholder
+- Mostrar posts, usuarios, comentarios
+- Combinar múltiples datos JSON
+- Usar Flexbox para layouts complejos
 
 ---
 
-## 🎯 Proyecto de Clase: Landing Page Moderna
+## 🎯 Proyecto de Clase: Galería de Personajes con API
 
-Desarrollaremos una landing page completa que combine:
+Desarrollaremos una galería interactiva que combine:
 
-- Grid para el layout general
-- Flexbox para componentes internos
-- Diseño completamente responsivo
-- Animaciones y transiciones
-- Mejores prácticas de CSS moderno
+- **HTML semántico** para estructura
+- **CSS Grid/Flexbox** para layout responsivo
+- **Fetch API** para consumir datos externos
+- **JSON parsing** para procesar respuestas
+- **Manipulación del DOM** para renderizar datos
+- **Error handling** para fallos de conexión
+
+### Pasos del Proyecto
+
+1. **Estructura HTML**
+   - Container principal
+   - Loading state
+   - Galería de tarjetas
+   - Mensaje de error
+
+2. **Estilos CSS**
+   - Grid responsivo para tarjetas
+   - Flexbox para contenido de tarjetas
+   - Animaciones de carga
+   - Design responsivo
+
+3. **JavaScript - Fetch de API**
+   ```javascript
+   async function cargarPersonajes() {
+     try {
+       const response = await fetch('https://rickandmortyapi.com/api/character');
+       const data = await response.json();
+       renderizarPersonajes(data.results);
+     } catch (error) {
+       mostrarError(error);
+     }
+   }
+   ```
+
+4. **JavaScript - Renderizar Datos**
+   ```javascript
+   function renderizarPersonajes(personajes) {
+     const galeria = document.getElementById('galeria');
+     galeria.innerHTML = personajes.map(p => `
+       <div class="tarjeta">
+         <img src="${p.image}" alt="${p.name}">
+         <h3>${p.name}</h3>
+         <p>${p.species}</p>
+       </div>
+     `).join('');
+   }
+   ```
 
 ---
 
@@ -291,18 +516,36 @@ Desarrollaremos una landing page completa que combine:
 
 ## 🏠 Tareas para Casa
 
-1. **Recrear Layouts Famosos**: Implementar el layout de sitios conocidos (Twitter, GitHub, etc.)
+1. **Galería de Rick and Morty**: 
+   - Consumir API y mostrar 20+ personajes
+   - Implementar búsqueda por nombre
+   - Agregar filtros por especie/estado
 
-2. **Galería Artística**: Crear una galería con diferentes tamaños de imágenes usando CSS Grid.
+2. **Comparador de Pokémon**: 
+   - Mostrar 2 Pokémon lado a lado
+   - Comparar estadísticas
+   - Usar Grid para layout
 
-3. **Dashboard Personal**: Desarrollar un dashboard personal con widgets informativos.
+3. **Blog con Datos Externos**: 
+   - Usar JSONPlaceholder para posts
+   - Mostrar autor, comentarios
+   - Filtrar por usuario
 
-4. **Portfolio Responsivo**: Crear un portfolio personal completamente responsivo.
+4. **Dashboard API Colombia**: 
+   - Listar departamentos y ciudades
+   - Búsqueda interactiva
+   - Diseño responsivo con Flexbox
+
+5. **Proyecto Integrador**: 
+   - Combinar CSS avanzado con API
+   - Implementar todos los conceptos
+   - Código limpio y comentado
 
 ---
 
 ## ✅ Checklist de Conceptos
 
+### CSS Flexbox y Grid
 - [ ] Entiendo los conceptos de eje principal y cruzado en Flexbox
 - [ ] Puedo usar todas las propiedades de Flexbox correctamente
 - [ ] Comprendo el sistema de líneas y áreas en CSS Grid
@@ -310,6 +553,16 @@ Desarrollaremos una landing page completa que combine:
 - [ ] Puedo crear layouts completamente responsivos
 - [ ] Entiendo y aplico el enfoque Mobile First
 - [ ] Conozco las mejores prácticas de CSS moderno
+
+### JSON y APIs
+- [ ] Comprendo la estructura y sintaxis de JSON
+- [ ] Puedo parsear JSON con JSON.parse()
+- [ ] Entiendo cómo funcionan las APIs REST
+- [ ] Puedo usar Fetch API correctamente
+- [ ] Implemento manejo de errores con try-catch
+- [ ] Sé cómo procesar respuestas de APIs
+- [ ] Puedo renderizar datos dinámicos en el DOM
+- [ ] Entiendo Promises y Async/Await
 
 ---
 
@@ -350,6 +603,34 @@ Desarrollaremos una landing page completa que combine:
     flex: 0 0 250px;
 }
 ```
+
+---
+
+## 📝 Resumen de Conceptos Clave
+
+### CSS Flexbox
+✅ Layout unidimensional (fila o columna)  
+✅ Perfecto para componentes  
+✅ Fácil alineación y distribución  
+✅ Responsive por defecto
+
+### CSS Grid
+✅ Layout bidimensional (filas y columnas)  
+✅ Ideal para layouts complejos  
+✅ Control fino sobre posicionamiento  
+✅ Excelente para pages
+
+### JSON
+✅ Formato ligero de intercambio de datos  
+✅ Fácil de parsear en JavaScript  
+✅ Estándar en todas las APIs modernas  
+✅ Tipos: strings, numbers, booleans, arrays, objects, null
+
+### APIs
+✅ Permiten obtener datos externos  
+✅ Fetch API es el estándar moderno  
+✅ Require manejo de errores  
+✅ Async/Await hace código más limpio
 
 ---
 
