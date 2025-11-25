@@ -127,7 +127,6 @@ Section (flex) con 5 cards en layout:
     
     /* Espaciado */
     gap: 1rem;
-    grid-gap: 1rem 2rem; /* fila columna */
     
     /* Alineación */
     justify-items: start | end | center | stretch;
