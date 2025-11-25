@@ -12,27 +12,27 @@ Esta aplicación debe ser responsiva, incluir modo oscuro/claro y estar completa
 
 **📅 Fecha Límite: 4 de Diciembre, 2025 hasta las 23:59**
 
-### 📄 Documento de Entrega
-
-Debes enviar un **documento PDF o Word** que contenga:
+Debes enviar dos enlaces que contengan:
 
 1. 🔗 **Enlace al Repositorio GitHub**
    - Ejemplo: `https://github.com/tu-usuario/nombre-proyecto`
    - Asegúrate de que sea **público**
-
-2. 🌐 **Enlace a la Web Desplegada (GitHub Pages)**
+   - En el readme que tengamos el **Enlace a la Web Desplegada (GitHub Pages)**
    - Ejemplo: `https://tu-usuario.github.io/nombre-proyecto`
    - Verificar que funcione correctamente
 
-3. 🎬 **Enlace al Video en YouTube**
+2. 🎬 **Enlace al Video en YouTube**
    - Debe estar **público o unlisted**
    - Máximo 5 minutos
    - Incluir descripción del proyecto
 
 ### 📧 Forma de Entrega
 
-El documento PDF/Word debe enviarse por:
-- A través la plataforma designada
+Dos enlaces en la plataforma [Academia DevSenior](https://www.academiadevsenior.com/login)
+- Link del repositorio público 
+- Link del video
+
+<img width="1781" height="575" alt="image" src="https://github.com/user-attachments/assets/4ffdcaf7-8411-40e9-9a51-cbe489d80d08" />
 
 ---
 
@@ -154,9 +154,7 @@ index.html
 │   ├── Logo/Título
 │   └── Dark Mode Toggle
 ├── Main
-│   ├── Input de búsqueda
-│   ├── Botón de búsqueda
-│   └── Contenedor de resultados (dinámico)
+│   └── Contenedor de resultados
 └── Footer
     └── Créditos y enlaces
 
@@ -674,7 +672,7 @@ Calificación = (Puntos Obtenidos / 30) × 100
 ## 📞 Soporte
 
 Si tienes dudas:
-- 📧 Contacta a tu mentor
+- 📧 Contacta a tu tutor(a)
 - 👥 Pregunta en el canal de WhatsApp
 - 📚 Revisa los materiales de clase
 - 🔗 Consulta la documentación oficial de las tecnologías
@@ -691,5 +689,4 @@ Recuerda: Este proyecto es tu oportunidad para consolidar los fundamentos de Jav
 
 **Formador**: Steven Zuluaga Cortés  
 **Módulo**: 1 - JavaScript Junior Developer: Web Foundations & Coding Skills  
-**Última actualización**: Noviembre 2025
 
