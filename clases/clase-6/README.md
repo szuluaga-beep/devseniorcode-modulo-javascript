@@ -13,6 +13,41 @@
 
 ---
 
+## 🎯 Proyecto: Landing Page DevSeniorCode
+
+### Desafío
+Implementa las clases CSS que faltan en `styles.css` para recrear el layout de la imagen:
+
+**Clases a crear:**
+- `.displayflex` → `display: flex; flex-direction: row;`
+- `.displayflexcolumna` → `display: flex; flex-direction: column;`
+- `.spacebetween` → `justify-content: space-between;`
+
+### Estructura
+```
+Header (flex + spacebetween)
+  - Título a la izquierda
+  - Botón a la derecha
+
+Section (flex) con 5 cards en layout:
+  - Card 1 (25%)
+  - Cards 2+5 en columna (25%)
+  - Card 3 (25%)
+  - Card 4 (25%)
+```
+
+### Pasos
+1. Crea `.displayflex` en el `<header>` para alinear título y botón
+2. Crea `.displayflex` en la `<section>` para las cards en fila
+3. Crea `.displayflexcolumna` en la `<div>` central (cards 2 y 5)
+4. Usa `.spacebetween` en el header para separar elementos
+
+### Bonus
+- Hazlo responsivo (móvil: 1 columna, tablet: 2 columnas, desktop: layout actual)
+- Agrega `gap` para espaciado uniforme
+
+---
+
 ## 🧠 Conceptos Clave
 
 ### CSS Flexbox: Layout Unidimensional
