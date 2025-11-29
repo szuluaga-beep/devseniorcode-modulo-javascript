@@ -2,40 +2,73 @@
 
 ## 📚 Objetivos de la Clase
 
-- Comprender qué es TypeScript y sus ventajas sobre JavaScript
-- Aprender el sistema de tipos de TypeScript
-- Configurar un entorno de desarrollo con TypeScript
-- Trabajar con interfaces, clases y tipos personalizados
-- Migrar código JavaScript existente a TypeScript
-- Usar TypeScript con el DOM y APIs del navegador
+- Entender qué es TypeScript y cómo mejora JavaScript
+- Aprender a usar interfaces y tipos personalizados
+- Crear clases tipadas con TypeScript
+- Comprender los beneficios del tipado estático
+- Construir una aplicación práctica: Tienda Online Tipada
 
 ---
 
 ## 🧠 ¿Qué es TypeScript?
 
-**TypeScript** es un **superset** de JavaScript desarrollado por Microsoft que añade **tipado estático opcional** y otras características avanzadas al lenguaje.
+**TypeScript** es un **superset** de JavaScript desarrollado por Microsoft que añade **tipado estático** al lenguaje. Es decir, te permite especificar qué tipo de dato debe tener cada variable, parámetro de función, etc.
 
-### Ventajas de TypeScript
+### ¿Por qué TypeScript?
 
-| Beneficio | Descripción |
-|-----------|-------------|
-| **Detección temprana de errores** | Los errores de tipo se detectan en tiempo de compilación, no en runtime |
-| **Mejor IntelliSense** | Autocompletado más preciso y documentación en línea |
-| **Refactoring seguro** | Cambios de código más seguros con detección automática de dependencias |
-| **Escalabilidad** | Ideal para proyectos grandes y equipos de desarrollo |
-| **Compatibilidad** | Todo código JavaScript válido es código TypeScript válido |
+Imagina que tienes una función que suma dos números:
+
+```javascript
+// JavaScript
+function sumar(a, b) {
+    return a + b;
+}
+
+sumar(5, 3);        // ✅ Funciona: 8
+sumar("5", "3");    // ✅ Funciona pero suma strings: "53"
+sumar(5, "3");      // ❌ Comportamiento impredecible
+```
+
+Con TypeScript puedes especificar exactamente qué esperas:
+
+```typescript
+// TypeScript
+function sumar(a: number, b: number): number {
+    return a + b;
+}
+
+sumar(5, 3);        // ✅ Correcto
+sumar("5", "3");    // ❌ Error en compilación
+sumar(5, "3");      // ❌ Error en compilación
+```
+
+### Ventajas Principales
+
+| Beneficio | Ejemplo |
+|-----------|---------|
+| **Errores antes de ejecutar** | TypeScript detecta errores durante el desarrollo, no cuando ejecutas el código |
+| **Autocompletado inteligente** | El editor sabe exactamente qué propiedades tiene cada objeto |
+| **Documentación automática** | Los tipos sirven como documentación del código |
+| **Refactoring seguro** | Cambiar un tipo automaticamente actualiza todo el código que lo usa |
+| **Compatible con JavaScript** | Todo código JavaScript válido es válido en TypeScript |
 
 ### El Flujo de TypeScript
 
 ```
-Código TypeScript (.ts) → Compilador (tsc) → JavaScript (.js) → Ejecución
+Código TypeScript (.ts) 
+    ↓
+Compilador (tsc) - Verifica tipos
+    ↓
+JavaScript (.js) - Código limpio
+    ↓
+Ejecución en navegador o Node.js
 ```
 
 ---
 
-## 🔧 Configuración del Entorno
+## 🔧 Configuración Básica
 
-### Instalación Global
+### Instalación
 
 ```bash
 # Instalar TypeScript globalmente
@@ -43,232 +76,164 @@ npm install -g typescript
 
 # Verificar instalación
 tsc --version
+```
 
+### Compilar un archivo TypeScript
+
+```bash
 # Compilar un archivo
 tsc archivo.ts
 
-# Modo watch (compilación automática)
+# Ver el resultado en JavaScript
+cat archivo.js
+
+# Modo watch (compila automáticamente cuando cambias el archivo)
 tsc archivo.ts --watch
 ```
 
-### Configuración de Proyecto
+### Proyecto TypeScript
 
 ```bash
-# Inicializar proyecto TypeScript
+# Inicializar un proyecto
 npm init -y
-npm install -D typescript @types/node
 
-# Crear archivo de configuración
+# Instalar TypeScript como dependencia de desarrollo
+npm install -D typescript
+
+# Crear configuración (tsconfig.json)
 tsc --init
-
-# Instalar ts-node para desarrollo
-npm install -D ts-node
-```
-
-### Archivo `tsconfig.json`
-
-```json
-{
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
-    "lib": ["ES2020", "DOM"],
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "sourceMap": true,
-    "removeComments": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
-}
 ```
 
 ---
 
-## 📝 Sistema de Tipos
+## 📝 Tipos Básicos en TypeScript
 
 ### Tipos Primitivos
 
 ```typescript
-// Tipos básicos
+// String
 let nombre: string = "Juan";
+
+// Number
 let edad: number = 25;
+let precio: number = 19.99;
+
+// Boolean
 let esActivo: boolean = true;
 
-// Arrays
-let numeros: number[] = [1, 2, 3, 4];
-let nombres: Array<string> = ["Ana", "Luis", "María"];
+// Array
+let numeros: number[] = [1, 2, 3];
+let nombres: Array<string> = ["Ana", "Luis"];
 
-// Tuplas
+// Tupla (array con tipos específicos en cada posición)
 let coordenada: [number, number] = [10, 20];
-let persona: [string, number] = ["Juan", 25];
+let usuario: [string, number] = ["Juan", 25];
 
-// Any (evitar su uso)
-let cualquierCosa: any = "texto";
-cualquierCosa = 42;
-cualquierCosa = true;
-
-// Unknown (alternativa más segura a any)
-let valorDesconocido: unknown = "algo";
-if (typeof valorDesconocido === "string") {
-    console.log(valorDesconocido.toUpperCase());
-}
-
-// Void (para funciones que no retornan nada)
-function saludar(): void {
-    console.log("¡Hola!");
-}
-
-// Never (para funciones que nunca terminan)
-function error(mensaje: string): never {
-    throw new Error(mensaje);
-}
-
-// Null y Undefined
-let valorNulo: null = null;
-let valorIndefinido: undefined = undefined;
-```
-
-### Union Types
-
-```typescript
-// Permitir múltiples tipos
+// Union (puede ser uno de varios tipos)
 let id: string | number;
-id = "abc123";
-id = 12345;
-
-// Con arrays
-let mixto: (string | number)[] = ["texto", 42, "otro"];
-
-// Función con union types
-function formatearId(id: string | number): string {
-    if (typeof id === "string") {
-        return id.toUpperCase();
-    } else {
-        return id.toString();
-    }
-}
+id = "abc123";    // ✅ OK
+id = 12345;       // ✅ OK
+// id = true;     // ❌ Error
 ```
 
-### Literal Types
+### Type Literals
+
+Restringir un valor a opciones específicas:
 
 ```typescript
-// Tipos literales
+// Solo permite estos valores exactos
 let direccion: "norte" | "sur" | "este" | "oeste";
-direccion = "norte"; // ✅ Válido
+direccion = "norte";     // ✅ OK
 // direccion = "arriba"; // ❌ Error
 
 // Con números
-let dados: 1 | 2 | 3 | 4 | 5 | 6;
-
-// Combinado con otros tipos
-let estado: "cargando" | "éxito" | "error" | number;
+let nivel: 1 | 2 | 3 | 4 | 5;
+nivel = 3;  // ✅ OK
 ```
 
 ---
 
 ## 🏗️ Interfaces y Types
 
-### Interfaces
+### ¿Qué es una Interfaz?
+
+Una interfaz es un contrato que especifica qué propiedades y métodos debe tener un objeto.
 
 ```typescript
-// Definir estructura de objetos
+// Definir una interfaz
+interface Producto {
+    id: number;
+    nombre: string;
+    precio: number;
+    enStock: boolean;    // Propiedad requerida
+    descripcion?: string; // Propiedad opcional (con ?)
+}
+
+// Usar la interfaz
+const laptop: Producto = {
+    id: 1,
+    nombre: "Laptop Dell",
+    precio: 1200,
+    enStock: true,
+    descripcion: "Laptop de alta performance"
+};
+
+// Sin descripción también es válido
+const mouse: Producto = {
+    id: 2,
+    nombre: "Mouse Inalámbrico",
+    precio: 25,
+    enStock: true
+    // descripcion no es obligatoria
+};
+```
+
+### Type vs Interface
+
+Ambos son muy similares, pero la interfaz es mejor para estructuras de objetos:
+
+```typescript
+// Interface (para estructuras de objetos)
 interface Usuario {
     id: number;
     nombre: string;
     email: string;
-    edad?: number; // Propiedad opcional
-    readonly fechaCreacion: Date; // Solo lectura
 }
 
-// Uso de la interfaz
-const usuario: Usuario = {
-    id: 1,
-    nombre: "Ana García",
-    email: "ana@email.com",
-    fechaCreacion: new Date()
-};
+// Type (para alias más simples o uniones)
+type Rol = 'admin' | 'usuario' | 'moderador';
 
-// Extender interfaces
-interface Admin extends Usuario {
-    permisos: string[];
-    nivel: "básico" | "avanzado" | "super";
+type Estado = 'activo' | 'inactivo';
+
+// Puedes combinarlos
+interface UsuarioConRol extends Usuario {
+    rol: Rol;
+    estado: Estado;
 }
-
-const admin: Admin = {
-    id: 2,
-    nombre: "Carlos Admin",
-    email: "carlos@admin.com",
-    fechaCreacion: new Date(),
-    permisos: ["leer", "escribir", "eliminar"],
-    nivel: "super"
-};
-
-// Interfaces para funciones
-interface CalculadoraFn {
-    (a: number, b: number): number;
-}
-
-const sumar: CalculadoraFn = (a, b) => a + b;
-const multiplicar: CalculadoraFn = (a, b) => a * b;
 ```
 
-### Type Aliases
+### Interfaces Extensibles
 
 ```typescript
-// Crear alias para tipos complejos
-type Estado = "cargando" | "éxito" | "error";
-type ID = string | number;
-
-// Tipos de objeto
-type Producto = {
-    id: ID;
-    nombre: string;
-    precio: number;
-    categoria: string;
-    disponible: boolean;
-};
-
-// Tipos de función
-type EventoCallback = (evento: string, datos: any) => void;
-
-// Tipos condicionales
-type EsString<T> = T extends string ? true : false;
-type Resultado1 = EsString<string>; // true
-type Resultado2 = EsString<number>; // false
-```
-
-### Diferencias entre Interface y Type
-
-```typescript
-// Las interfaces se pueden extender y fusionar
+// Interfaz base
 interface Vehículo {
     marca: string;
+    modelo: string;
+    año: number;
 }
 
-interface Vehículo {
-    modelo: string; // Se fusiona con la anterior
+// Extender una interfaz
+interface Auto extends Vehículo {
+    puertas: number;
+    combustible: 'gasolina' | 'diesel' | 'eléctrico';
 }
 
-// Los types son más flexibles para union types
-type FormaDePago = "efectivo" | "tarjeta" | "transferencia";
-
-// Ambos pueden usarse para objetos
-interface ConfigInterface {
-    apiUrl: string;
-    timeout: number;
-}
-
-type ConfigType = {
-    apiUrl: string;
-    timeout: number;
+const miAuto: Auto = {
+    marca: 'Toyota',
+    modelo: 'Corolla',
+    año: 2023,
+    puertas: 4,
+    combustible: 'gasolina'
 };
 ```
 
@@ -276,394 +241,390 @@ type ConfigType = {
 
 ## 🎯 Clases en TypeScript
 
-### Clases Básicas
+Las clases en TypeScript son como en JavaScript, pero con tipos:
 
 ```typescript
-class Animal {
-    // Propiedades
-    protected nombre: string;
-    private edad: number;
-    public especie: string;
+// Clase simple
+class Coche {
+    // Propiedades con tipos
+    marca: string;
+    modelo: string;
+    velocidad: number = 0;
 
     // Constructor
-    constructor(nombre: string, edad: number, especie: string) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.especie = especie;
+    constructor(marca: string, modelo: string) {
+        this.marca = marca;
+        this.modelo = modelo;
     }
 
     // Métodos
-    public hacerSonido(): void {
-        console.log(`${this.nombre} hace un sonido`);
+    acelerar(): void {
+        this.velocidad += 10;
+        console.log(`${this.marca} ${this.modelo} acelerando a ${this.velocidad} km/h`);
     }
 
-    // Getter
-    get Edad(): number {
-        return this.edad;
-    }
-
-    // Setter
-    set Edad(nuevaEdad: number) {
-        if (nuevaEdad > 0) {
-            this.edad = nuevaEdad;
-        }
-    }
-
-    // Método estático
-    static crearAnimalGenerico(): Animal {
-        return new Animal("Sin nombre", 0, "Desconocida");
+    obtenerVelocidad(): number {
+        return this.velocidad;
     }
 }
 
-// Herencia
-class Perro extends Animal {
-    private raza: string;
+// Usar la clase
+const miCoche = new Coche("Toyota", "Corolla");
+miCoche.acelerar(); // Toyota Corolla acelerando a 10 km/h
+```
 
-    constructor(nombre: string, edad: number, raza: string) {
-        super(nombre, edad, "Canino");
+### Modificadores de Acceso
+
+```typescript
+class Persona {
+    // public - accesible desde cualquier lado (por defecto)
+    public nombre: string;
+
+    // private - solo accesible dentro de la clase
+    private edad: number;
+
+    // protected - accesible en la clase y subclases
+    protected direccion: string;
+
+    constructor(nombre: string, edad: number, direccion: string) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.direccion = direccion;
+    }
+
+    private calcularAñoNacimiento(): number {
+        return new Date().getFullYear() - this.edad;
+    }
+
+    protected cambiarDireccion(nueva: string): void {
+        this.direccion = nueva;
+    }
+}
+
+const persona = new Persona("Juan", 30, "Calle Principal 123");
+console.log(persona.nombre);        // ✅ OK (public)
+// console.log(persona.edad);       // ❌ Error (private)
+// console.log(persona.direccion);  // ❌ Error (protected)
+```
+
+### Herencia
+
+```typescript
+// Clase base
+class Animal {
+    nombre: string;
+
+    constructor(nombre: string) {
+        this.nombre = nombre;
+    }
+
+    hacerSonido(): void {
+        console.log(`${this.nombre} hace un sonido`);
+    }
+}
+
+// Clase derivada
+class Perro extends Animal {
+    raza: string;
+
+    constructor(nombre: string, raza: string) {
+        super(nombre);  // Llamar al constructor padre
         this.raza = raza;
     }
 
-    // Override
-    public hacerSonido(): void {
-        console.log(`${this.nombre} ladra: ¡Guau!`);
-    }
-
-    public buscar(): void {
-        console.log(`${this.nombre} está buscando la pelota`);
+    // Sobrescribir método
+    hacerSonido(): void {
+        console.log(`${this.nombre} (${this.raza}) ladra: ¡Guau!`);
     }
 }
 
-// Uso
-const miPerro = new Perro("Max", 3, "Golden Retriever");
-miPerro.hacerSonido(); // Max ladra: ¡Guau!
-miPerro.buscar(); // Max está buscando la pelota
-```
-
-### Clases Abstractas
-
-```typescript
-abstract class Forma {
-    protected color: string;
-
-    constructor(color: string) {
-        this.color = color;
-    }
-
-    // Método abstracto (debe implementarse en clases hijas)
-    abstract calcularArea(): number;
-
-    // Método concreto
-    public describir(): string {
-        return `Una forma de color ${this.color}`;
-    }
-}
-
-class Círculo extends Forma {
-    private radio: number;
-
-    constructor(color: string, radio: number) {
-        super(color);
-        this.radio = radio;
-    }
-
-    calcularArea(): number {
-        return Math.PI * this.radio ** 2;
-    }
-}
-
-class Rectángulo extends Forma {
-    private ancho: number;
-    private alto: number;
-
-    constructor(color: string, ancho: number, alto: number) {
-        super(color);
-        this.ancho = ancho;
-        this.alto = alto;
-    }
-
-    calcularArea(): number {
-        return this.ancho * this.alto;
-    }
-}
+const miPerro = new Perro("Max", "Golden Retriever");
+miPerro.hacerSonido(); // Max (Golden Retriever) ladra: ¡Guau!
 ```
 
 ---
 
-## 🌐 TypeScript con DOM
+## 💻 Ejercicio Práctico: Tienda Online Tipada
 
-### Tipado del DOM
+En este ejercicio construiremos una tienda online usando TypeScript con interfaces, clases y tipos.
 
-```typescript
-// Selección de elementos con tipos específicos
-const botón = document.getElementById('miBoton') as HTMLButtonElement;
-const input = document.querySelector('#miInput') as HTMLInputElement;
-const lista = document.getElementsByClassName('lista')[0] as HTMLUListElement;
+### Estructura del Ejercicio
 
-// Verificación de tipos
-const elemento = document.getElementById('elemento');
-if (elemento instanceof HTMLInputElement) {
-    // TypeScript sabe que elemento es un HTMLInputElement
-    console.log(elemento.value);
-}
-
-// Event listeners tipados
-botón.addEventListener('click', (evento: MouseEvent) => {
-    evento.preventDefault();
-    console.log('Botón clickeado');
-});
-
-input.addEventListener('input', (evento: Event) => {
-    const target = evento.target as HTMLInputElement;
-    console.log('Valor:', target.value);
-});
-
-// Custom Event
-interface DatoPersonalizado {
-    mensaje: string;
-    timestamp: number;
-}
-
-const eventoPersonalizado = new CustomEvent<DatoPersonalizado>('miEvento', {
-    detail: {
-        mensaje: 'Hola desde TypeScript',
-        timestamp: Date.now()
-    }
-});
-
-document.dispatchEvent(eventoPersonalizado);
-
-document.addEventListener('miEvento', (evento: CustomEvent<DatoPersonalizado>) => {
-    console.log(evento.detail.mensaje);
-});
+```
+Tienda Online
+├── Catálogo (gestiona productos)
+├── Carrito (gestiona items del cliente)
+└── Gestor de Órdenes (procesa y registra órdenes)
 ```
 
-### Manejo de APIs
+### Conceptos TypeScript Utilizados
 
-```typescript
-// Interfaz para respuesta de API
-interface Usuario {
-    id: number;
-    name: string;
-    email: string;
-    phone: string;
-}
+✅ **Interfaces**: `Producto`, `CarritoItem`, `Orden`  
+✅ **Types**: `Categoria`, tipos para estados  
+✅ **Clases**: `Catalogo`, `Carrito`, `GestorOrdenes`  
+✅ **Métodos tipados**: Cada método especifica parámetros y retorno  
+✅ **Arrays tipados**: Arrays que solo contienen el tipo correcto  
 
-interface RespuestaAPI<T> {
-    data: T;
-    success: boolean;
-    message: string;
-}
+### Pasos del Ejercicio
 
-// Función async con tipos
-async function obtenerUsuario(id: number): Promise<Usuario | null> {
-    try {
-        const respuesta = await fetch(`/api/usuarios/${id}`);
-        const datos: RespuestaAPI<Usuario> = await respuesta.json();
-        
-        if (datos.success) {
-            return datos.data;
-        } else {
-            console.error(datos.message);
-            return null;
-        }
-    } catch (error) {
-        console.error('Error al obtener usuario:', error);
-        return null;
-    }
-}
+1. **Definir los tipos** (`types.ts`)
+   - Crear interfaces para productos, carrito y órdenes
+   - Definir tipos para categorías
 
-// Uso
-async function mostrarUsuario() {
-    const usuario = await obtenerUsuario(1);
-    if (usuario) {
-        console.log(`Usuario: ${usuario.name} (${usuario.email})`);
-    }
-}
-```
+2. **Crear las clases** (`types.ts`)
+   - `Catalogo`: Agregar, buscar y filtrar productos
+   - `Carrito`: Agregar/eliminar items, calcular total
+   - `GestorOrdenes`: Crear y procesar órdenes
+
+3. **Conectar con el DOM** (`index.ts`)
+   - Mostrar productos en HTML
+   - Manejar eventos de botones
+   - Actualizar carrito en tiempo real
+
+4. **Ver el resultado**
+   - Abrir `index.html` en el navegador
+   - Probar agregar productos al carrito
+   - Procesar una orden
 
 ---
 
-## 🛠️ Generics
+## 🛠️ Generics (Genéricos)
+
+Los genéricos permiten crear código reutilizable que funciona con cualquier tipo:
 
 ```typescript
 // Función genérica
-function identidad<T>(arg: T): T {
-    return arg;
+function obtenerPrimero<T>(array: T[]): T | undefined {
+    return array[0];
 }
 
-const número = identidad<number>(42);
-const texto = identidad<string>("Hola");
+const numeros = obtenerPrimero([1, 2, 3]);           // T es number
+const textos = obtenerPrimero(["a", "b", "c"]);     // T es string
 
 // Clase genérica
-class Contenedor<T> {
-    private elementos: T[] = [];
+class Caja<T> {
+    private contenido: T;
 
-    agregar(elemento: T): void {
-        this.elementos.push(elemento);
+    constructor(contenido: T) {
+        this.contenido = contenido;
     }
 
-    obtener(índice: number): T | undefined {
-        return this.elementos[índice];
+    obtener(): T {
+        return this.contenido;
     }
 
-    obtenerTodos(): T[] {
-        return [...this.elementos];
-    }
-
-    get longitud(): number {
-        return this.elementos.length;
+    cambiar(nuevo: T): void {
+        this.contenido = nuevo;
     }
 }
 
-// Uso
-const númeroContenedor = new Contenedor<number>();
-númeroContenedor.agregar(1);
-númeroContenedor.agregar(2);
+const cajaNumeros = new Caja<number>(42);
+const cajaTexto = new Caja<string>("Hola");
 
-const textoContenedor = new Contenedor<string>();
-textoContenedor.agregar("Hola");
-textoContenedor.agregar("Mundo");
-
-// Interface genérica
-interface Repository<T> {
-    obtenerTodos(): Promise<T[]>;
-    obtenerPorId(id: string): Promise<T | null>;
-    crear(item: Omit<T, 'id'>): Promise<T>;
-    actualizar(id: string, item: Partial<T>): Promise<T>;
-    eliminar(id: string): Promise<boolean>;
-}
-
-// Implementación
-class UsuarioRepository implements Repository<Usuario> {
-    async obtenerTodos(): Promise<Usuario[]> {
-        // Implementación
-        return [];
-    }
-
-    async obtenerPorId(id: string): Promise<Usuario | null> {
-        // Implementación
-        return null;
-    }
-
-    async crear(usuario: Omit<Usuario, 'id'>): Promise<Usuario> {
-        // Implementación
-        return { id: 1, ...usuario } as Usuario;
-    }
-
-    async actualizar(id: string, usuario: Partial<Usuario>): Promise<Usuario> {
-        // Implementación
-        return {} as Usuario;
-    }
-
-    async eliminar(id: string): Promise<boolean> {
-        // Implementación
-        return true;
-    }
-}
+console.log(cajaNumeros.obtener()); // 42
+console.log(cajaTexto.obtener());   // "Hola"
 ```
 
 ---
 
 ## 💻 Ejercicios Prácticos
 
-### Ejercicio 1: Sistema de Gestión de Biblioteca
-Crear un sistema con interfaces para libros, usuarios y préstamos.
+### 1. Tienda Online (Incluido en el proyecto)
+Crear un sistema de e-commerce con catálogo, carrito y gestión de órdenes.
 
-### Ejercicio 2: Calculadora Tipada
-Implementar una calculadora con tipos estrictos y manejo de errores.
+**Conceptos**: Interfaces, clases, tipos, métodos tipados
 
-### Ejercicio 3: Lista de Tareas con TypeScript
-Migrar el ejercicio de lista de tareas a TypeScript con tipos apropiados.
+### 2. Sistema de Contactos
+Crear una aplicación para gestionar contactos con TypeScript.
 
-### Ejercicio 4: API Client Tipado
-Crear un cliente para consumir una API REST con tipos TypeScript.
+```typescript
+interface Contacto {
+    id: number;
+    nombre: string;
+    email: string;
+    telefono: string;
+}
+
+class GestorContactos {
+    private contactos: Contacto[] = [];
+    private siguiente_id = 1;
+
+    agregar(nombre: string, email: string, telefono: string): Contacto {
+        const contacto: Contacto = {
+            id: this.siguiente_id++,
+            nombre,
+            email,
+            telefono
+        };
+        this.contactos.push(contacto);
+        return contacto;
+    }
+
+    obtenerTodos(): Contacto[] {
+        return [...this.contactos];
+    }
+
+    buscar(termino: string): Contacto[] {
+        return this.contactos.filter(c =>
+            c.nombre.includes(termino) ||
+            c.email.includes(termino)
+        );
+    }
+
+    eliminar(id: number): boolean {
+        const indice = this.contactos.findIndex(c => c.id === id);
+        if (indice !== -1) {
+            this.contactos.splice(indice, 1);
+            return true;
+        }
+        return false;
+    }
+}
+```
+
+### 3. Carrera de Maratón
+Registrar y gestionar participantes de una maratón.
+
+```typescript
+interface Participante {
+    id: number;
+    nombre: string;
+    edad: number;
+    tiempo: number | null; // en minutos
+}
+
+type Categoría = 'menores' | 'adultos' | 'mayores';
+
+function obtenerCategoría(edad: number): Categoría {
+    if (edad < 18) return 'menores';
+    if (edad < 60) return 'adultos';
+    return 'mayores';
+}
+```
 
 ---
 
-## 🎯 Proyecto de Clase: Aplicación de Notas
+## 🎯 Proyecto de Clase: Tienda Online Tipada
 
-Desarrollaremos una aplicación de notas completa que incluya:
+### Descripción
+En este proyecto construimos una tienda online completa usando TypeScript. Aprenderemos a:
 
-- Interfaces para modelos de datos
-- Clases para lógica de negocio
-- Tipado del DOM y eventos
-- Manejo de LocalStorage tipado
-- Validaciones de tipos en tiempo de ejecución
+- Definir interfaces para productos, carrito y órdenes
+- Crear clases para gestionar la lógica de negocio
+- Tipar correctamente todas las funciones
+- Conectar TypeScript con el DOM
+- Manejar eventos con tipos
+
+### Estructura del Proyecto
+
+```
+ejercicios/
+├── index.html           # Interfaz web
+├── styles.css          # Estilos
+├── tsconfig.json       # Configuración de TypeScript
+├── package.json        # Dependencias
+└── src/
+    ├── index.ts        # Lógica principal
+    └── types.ts        # Tipos e interfaces
+```
+
+### Cómo Usar
+
+```bash
+# 1. Compilar TypeScript
+npm run build
+
+# 2. Abrir en navegador
+npm run serve
+
+# 3. Modo desarrollo (recompila automáticamente)
+npm run dev
+```
+
+### Características
+
+✅ Catálogo de productos filtrable por categoría  
+✅ Carrito de compras funcional  
+✅ Procesamiento de órdenes  
+✅ Búsqueda de productos  
+✅ Historial de órdenes  
+✅ 100% tipado con TypeScript
 
 ---
 
 ## 📖 Recursos Adicionales
 
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
-- [TypeScript Playground](https://www.typescriptlang.org/play)
-- [Definitely Typed](https://definitelytyped.org/) - Tipos para librerías JavaScript
-- [TSConfig Reference](https://www.typescriptlang.org/tsconfig)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/) - Documentación oficial
+- [TypeScript Playground](https://www.typescriptlang.org/play) - Prueba TypeScript online
+- [Definitely Typed](https://definitelytyped.org/) - Tipos para librerías populares
 
 ---
 
 ## 🏠 Tareas para Casa
 
-1. **Migración Gradual**: Tomar un proyecto JavaScript anterior y migrarlo gradualmente a TypeScript.
+### 1. Ampliar la Tienda Online
+- Agregar un sistema de descuentos
+- Implementar filtro por precio
+- Agregar más categorías y productos
 
-2. **Sistema de E-commerce**: Crear interfaces y clases para un sistema de comercio electrónico (productos, carrito, usuarios).
+### 2. Crear un Sistema de Biblioteca
+```typescript
+interface Libro {
+    id: number;
+    titulo: string;
+    autor: string;
+    isbn: string;
+    disponible: boolean;
+}
 
-3. **API Client**: Desarrollar un cliente para la API de JSONPlaceholder con tipos completos.
+// Implementar: agregar libro, prestar, devolver, buscar
+```
 
-4. **Componente Reutilizable**: Crear un componente de formulario genérico y reutilizable.
+### 3. Gestor de Tareas Tipado
+Crear una app de tareas con TypeScript que incluya:
+- Crear tarea
+- Marcar como completada
+- Filtrar por estado
+- Eliminar tarea
+
+### 4. Desafío Extra: Sistema de Calificaciones
+Crear un sistema para gestionar calificaciones de estudiantes:
+- Registrar estudiantes
+- Agregar calificaciones
+- Calcular promedio
+- Identificar estudiantes en riesgo (promedio < 60)
 
 ---
 
 ## ✅ Checklist de Conceptos
 
 - [ ] Entiendo qué es TypeScript y sus ventajas
-- [ ] Puedo configurar un proyecto TypeScript desde cero
-- [ ] Conozco los tipos primitivos y cómo usarlos
-- [ ] Sé crear y usar interfaces y types
-- [ ] Puedo trabajar con clases y herencia en TypeScript
-- [ ] Entiendo los generics y cuándo usarlos
-- [ ] Puedo tipar correctamente el DOM y eventos
-- [ ] Sé manejar APIs con tipos apropiados
+- [ ] Puedo usar tipos primitivos correctamente
+- [ ] Sé crear y usar interfaces
 - [ ] Entiendo la diferencia entre interface y type
-- [ ] Puedo migrar código JavaScript a TypeScript
+- [ ] Puedo crear clases con TypeScript
+- [ ] Sé usar herencia en clases
+- [ ] Entiendo los modificadores: public, private, protected
+- [ ] Puedo crear funciones con tipos específicos
+- [ ] Sé trabajar con arrays tipados
+- [ ] Puedo usar types literal para restricciones
+- [ ] Entiendo los generics básicos
+- [ ] Puedo tipar correctamente elementos del DOM
 
 ---
 
-## 🔧 Utilidades de Tipos Avanzadas
+## 💡 Tips Importantes
 
-```typescript
-// Utility Types útiles
-interface Usuario {
-    id: number;
-    nombre: string;
-    email: string;
-    contraseña: string;
-    fechaCreacion: Date;
-}
+1. **Compila antes de ejecutar**: Siempre compila el código TypeScript a JavaScript antes de ejecutarlo en el navegador.
 
-// Partial - hace todas las propiedades opcionales
-type UsuarioParcial = Partial<Usuario>;
+2. **Lee los errores**: Los mensajes de error de TypeScript son muy descriptivos, ayúdate de ellos.
 
-// Pick - selecciona propiedades específicas
-type UsuarioPublico = Pick<Usuario, 'id' | 'nombre' | 'email'>;
+3. **Usa tipos específicos**: Evita usar `any` - TypeScript pierde su valor si usas `any`.
 
-// Omit - excluye propiedades específicas
-type UsuarioSinPassword = Omit<Usuario, 'contraseña'>;
+4. **Las interfaces documentan**: Las interfaces sirven como documentación del código, especifica bien sus propiedades.
 
-// Required - hace todas las propiedades requeridas
-type UsuarioCompleto = Required<Usuario>;
-
-// Record - crea un objeto con claves específicas
-type EstadosUsuario = Record<'activo' | 'inactivo' | 'suspendido', boolean>;
-
-// Mapped Types personalizados
-type ReadOnly<T> = {
-    readonly [P in keyof T]: T[P];
-};
-
-type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
-```
+5. **Practica con ejercicios reales**: La mejor forma de aprender TypeScript es usándolo en proyectos reales.
 
 ---
 
-> **Próxima clase**: Proyecto Integrador - Desarrollo de aplicación web completa con todos los conceptos aprendidos
+> **Próxima clase**: Proyecto Integrador - Combinaremos todo lo aprendido en un proyecto web completo
